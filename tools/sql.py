@@ -26,5 +26,11 @@ class sql_tools:
 		print(values)
 		return values
 
+	def get_books_with_category(self,category):
+		self.cursor.execute('select * from books where category="'+category+'"')
+		values=self.cursor.fetchall()
+		print(values)
+		return values
+
 	def close(self):
 		self.conn.close()
