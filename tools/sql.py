@@ -32,5 +32,15 @@ class sql_tools:
 		print(values)
 		return values
 
+	def delete_book_by_id(self,book_id):
+		book=self.cursor.execute('select * from books where id="'+book_id+'"')
+		values=self.cursor.fetchall()
+		user_input=input('Input "yes" to delete the book'+str(values[0]))
+		if user_input!="yes":
+			pirnt("quit")
+			return
+		self.conn.execute('delete from books where id ="'+book_id+'"')
+		self.conn.commit()
+
 	def close(self):
 		self.conn.close()
